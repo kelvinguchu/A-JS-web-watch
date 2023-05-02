@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Watch</title>
+<style>
+    body{
+        background-color: rgb(37, 34, 34);
+    }
+
+    div{
+    margin: 0 auto;
+    width:50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: azure;
+    border-radius: 100px;
+    box-shadow: 0 0 10px rgba(101, 185, 241, 0.5);
+    padding: 20px; 
+    font-size: 100px;
+    font-family: 'Digital-7';
+    text-align: center;
+    background-color: rgb(10, 10, 10);
+    }
+    @font-face {
+        font-family: 'Digital-7';
+        src: url('../JSWatch/digital-7.ttf');
+    }
+
+    #greetings {
+        font-size: 50px;
+    }
+
+</style>
+</head>
+<body onload="startTime()">
+<div id="myDiv">
+    <p id="greetings"></p>
+    <p id="watch"></p>
+</div>  
+        <script>
+            /*a function that takes the local time and updates it by a second every 1000ms
+            And also greets a person in accordance to the time*/
+            function startTime() {
+            const date = new Date();
+            const hour = date.getHours();
+            document.getElementById("watch").innerHTML = date.toLocaleTimeString('en-UK', {hour12:true, hour: 'numeric', minute:'numeric', second:'numeric'}).toLocaleUpperCase();
+            setTimeout(function() {startTime()}, 1000);
+        
+            if (hour < 12) {
+                        document.getElementById("greetings").innerHTML = "Good Morning";
+                        var myDiv = document.getElementById("myDiv");
+                        myDiv.style.backgroundImage = "url('../JSWatch/sunrise.jpg')";
+            } else if (hour < 19) {
+                        document.getElementById("greetings").innerHTML = "Good Evening";
+                        var myDiv = document.getElementById("myDiv");
+                        myDiv.style.backgroundImage = "url('../JSWatch/afternoon.jpg')";
+            } else {
+                        document.getElementById("greetings").innerHTML = "Good Night";
+                        var myDiv = document.getElementById("myDiv");
+                        myDiv.style.backgroundImage = "url('../JSWatch/sunset.jpg')";
+
+          };
+        };
+          </script>
+</body>
+</html>
