@@ -48,20 +48,18 @@
             function startTime() {
             const date = new Date();
             const hour = date.getHours();
+            const myDiv = document.getElementById("myDiv"); 
             document.getElementById("watch").innerHTML = date.toLocaleTimeString('en-UK', {hour12:true, hour: 'numeric', minute:'numeric', second:'numeric'}).toLocaleUpperCase();
             setTimeout(function() {startTime()}, 1000);
         
             if (hour < 12) {
                         document.getElementById("greetings").innerHTML = "Good Morning";
-                        var myDiv = document.getElementById("myDiv");
                         myDiv.style.backgroundImage = "url('../JSWatch/sunrise.jpg')";
             } else if (hour < 19) {
                         document.getElementById("greetings").innerHTML = "Good Evening";
-                        var myDiv = document.getElementById("myDiv");
                         myDiv.style.backgroundImage = "url('../JSWatch/afternoon.jpg')";
             } else {
                         document.getElementById("greetings").innerHTML = "Good Night";
-                        var myDiv = document.getElementById("myDiv");
                         myDiv.style.backgroundImage = "url('../JSWatch/sunset.jpg')";
 
           };
